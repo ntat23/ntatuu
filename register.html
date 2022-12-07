@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+	integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.8.3/angular-messages.min.js"
+	integrity="sha512-a+xgEyXVK7r+KKIDYyHtFfLi9LItmFDff6Z4/5lrGmL03u1vtFCjQXQz3dSIwOapB3YIRMBO1+IQj6ptnxAh/A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<title>Register</title>
+</head>
+<body ng-app="myapp">
+	<div id="bk" >
+		<div class="container" ng-controller="myctrl">
+			<div class="row justify-content-around">
+				<form name="Form" class="col-md-6 col-6 bg-light p-3 my-5" novalidate>
+                    <h1 class="text-center text-uppercase h3">Đăng kí tài
+						khoản</h1>
+                      <!-- FULLNAME -->
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" id="fullname" aria-describedby="emailHelp" maxlength="25"
+                            name="fullname" ng-model="fullnameModel"  pattern="^[a-zA-Z'-'\sáàảãạăâắằấầặẵẫậéèẻ ẽẹếềểễệóòỏõọôốồổỗộ ơớờởỡợíìỉĩịđùúủũụưứ� �ửữựÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠ ƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼ� ��ỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞ ỠỢỤỨỪỬỮỰỲỴÝỶỸửữựỵ ỷỹ]*$" required>
+                    </div>
+                    
+                  
+                    <div ng-if="Form.$submitted || Form.fullname.$dirty" class="mb-2"
+                        ng-messages="Form.fullname.$error" style="color: #D10024;" role="alert">
+                        <div ng-message="required"><strong>Vui lòng nhập họ và tên!</strong></div>
+                        <div ng-message="maxlength"><strong>Độ dài không được vượt quá 25 ký tự!</strong></div>                       
+                        <div ng-message-default><strong>Họ và tên không chính xác!</strong></div>
+                    </div>
+
+                     <!-- username -->
+                     <div class="mb-3">
+                        <label for="username" class="form-label">Tên đăng nhập</label>
+                        <input type="text" class="form-control" id="username" aria-describedby="emailHelp" maxlength="10"
+                            name="username" ng-model="usernameModel"required>
+                    </div>
+                    
+                    <div ng-if="Form.$submitted || Form.username.$dirty" class="mb-2"
+                        ng-messages="Form.username.$error" style="color: #D10024;" role="alert">
+                        <div ng-message="required"><strong>Vui lòng nhập Username</strong></div>
+                        <div ng-message="maxlength"><strong>Độ dài không được vượt quá 10 ký tự!</strong></div>
+                        <div ng-message-default><strong>Username không chính xác!</strong></div>
+                    </div>
+
+
+                    <!-- matkhau -->
+                    <div class="mb-3">
+                        <label for="mkau" class="form-label">Mật khẩu</label>
+                        <input type="test" class="form-control" id="mkau" name="mkau" ng-model="mkauModel"
+                            required aria-describedby="emailHelp" minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                    </div>
+                   
+                    <div ng-if="Form.$submitted || Form.mkau.$dirty" class="mb-2" ng-messages="Form.mkau.$error"
+                        style="color: #D10024;" role="alert">
+                        <div ng-message="required"><strong>Vui lòng nhập mật khẩu!</strong></div>
+                        <div ng-message="minlength"><strong>Mật khẩu phải nhiều hơn 8 kí tự!</strong></div>
+                        
+                        <div ng-message="pattern"><strong>Mật khẩu phải có ít nhất một số và không có kí tự đặc biệt</strong></div>
+                        <div ng-message-default><strong>Mật khẩu không chính xác!</strong></div>
+                    </div>
+                   <!-- gioitinh -->
+                    <div class="form-group">
+						<lable for="gender">Giới tính</lable>
+						<div>
+
+							<div class="form-check-inline">
+								<input type="radio" name="gender" id="male" value="male"
+									class="form-check-input" checked /> <label for="male"
+									class="form-check-lable">Nam</label>
+
+
+							</div>
+							<div class="form-check-inline">
+								<input type="radio" name="gender" id="female" value="female"
+									class="form-check-input" /> <label for="female"
+									class="form-check-lable">Nữ</label>
+
+							</div>
+
+						</div>
+					</div>
+                    <!-- email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                            name="email" ng-model="emailModel" required>
+                    </div>
+                 
+                    <div ng-if="Form.$submitted || Form.email.$dirty" class="mb-2" ng-messages="Form.email.$error"
+                        style="color: #D10024;" role="alert">
+                        <div ng-message="required"><strong>Email không được để trống!</strong></div>
+                        <div ng-message-default><strong>Email không đúng định dạng!</strong></div>
+                    </div>
+                 <!-- số điẹnthóiạ -->
+                    <div class="mb-3">
+                        <label for="carNumber" class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control text-uppercase" id="carNumber" name="carNumber"
+                            ng-model="carNumberModel" pattern=(84|0[3|5|7|8|9])+([0-9]{8})\b required
+                            aria-describedby="emailHelp">
+                    </div>
+                    
+                    <div ng-if="Form.$submitted || Form.carNumber.$dirty" class="mb-2"
+                        ng-messages="Form.carNumber.$error" style="color: #D10024;" role="alert">
+                        <div ng-message="required"><strong>Số điện thoại không được để trống!</strong></div>
+                        <div ng-message="pattern"><strong>Không đúng Số điện thoại!</strong></div>
+                        <div ng-message-default><strong>Số điện thoại không chính xác!</strong></div>
+                    </div>
+                 
+
+                    <div
+                    class="d-flex align-content-center justify-content-center">
+                    <button type="submit"
+                        class="btn btn-info btn-block btn-lg">
+                        <a href="index.html"
+                            style="text-decoration: none; color: #2B2D42;">
+                            <div>
+                                <span> Đăng ký <i
+                                        class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                            </div>
+                        </a>
+                    </button>
+                    </div>
+                </form>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	var app = angular.module("myapp", ['ngMessages']);
+app.controller("myctrl", function ($scope, $window) {
+   
+});
+</script>
+</html>
